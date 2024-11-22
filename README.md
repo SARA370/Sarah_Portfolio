@@ -1,24 +1,57 @@
 # sarah-portfolio
+Une courte description de ce que fait le projet et ce à quoi il sert.
 
-## Project setup
-```
-npm install
-```
+## Table des Matières
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Lancement](#lancement)
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies Utilisées](#technologies-utilisées)
+- [Auteur](#auteur)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Prérequis
+Avant de commencer, assurez-vous d’avoir installé les éléments suivants :
+- [Node.js](https://nodejs.org/) (version 14.x ou supérieure)
+- [Git](https://git-scm.com/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Installation
+1. Clonez le dépôt GitHub :
+   ```bash
+   git clone https://github.com/votre-utilisateur/nom-du-projet.git
+   ```
+2. Accédez au répertoire du projet :
+   ```bash
+   cd nom-du-projet
+   ```
+3. Installez les dépendances :
+   ```bash
+   npm install
+   ```
 
-### Lints and fixes files
+## Lancement
+Pour démarrer le projet en local :
+```bash
+npm run dev
 ```
-npm run lint
-```
+Le projet sera accessible à l’adresse [http://localhost:3000](http://localhost:3000).
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Fonctionnalités
+- [ ] Fonctionnalité 1 : Description
+- [ ] Fonctionnalité 2 : Description
+- [ ] Fonctionnalité 3 : Description
+
+## Captures d’écran
+Ajoutez ici des captures d’écran pour illustrer votre projet.
+
+## Technologies Utilisées
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Framework (ex : Vue.js, React, etc.)**
+
+## Auteur
+- **Votre Nom** - [Votre GitHub](https://github.com/votre-utilisateur)
+
+---
+N’hésitez pas à me contacter pour toute question ou suggestion concernant ce projet.
+

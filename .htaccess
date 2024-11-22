@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    <!-- Active le module de réécriture d’URL. -->
+    RewriteEngine On
+    <!-- Définit la base de l’URL pour les règles de réécriture -->
+    RewriteBase /
+  
+    <!-- Redirection de non-www vers www -->
+    RewriteCond %{HTTP_HOST} ^votredomaine.com [NC]
+    RewriteRule ^(.*)$ http://www.votredomaine.com/$1 [L,R=301]
+  
+    <!-- Redirection de HTTP vers HTTPS -->
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+    <!-- Si l’URL est index.html, ne pas réécrire. -->
+    RewriteRule ^index\.html$ - [L]
+    <!-- Si le fichier demandé n’existe pas. -->
+    RewriteCond %{REQUEST_FILENAME} !-f
+    <!-- Si le répertoire demandé n’existe pas. -->
+    RewriteCond %{REQUEST_FILENAME} !-d
+    <!-- Réécrire toutes les autres URL vers index.html. -->
+    RewriteRule . /index.html [L]
+  </IfModule>
+  
