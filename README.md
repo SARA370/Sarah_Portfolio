@@ -51,7 +51,3 @@ Ajoutez ici des captures d’écran pour illustrer votre projet.
 
 ## Auteur
 - **Votre Nom** - [Votre GitHub](https://github.com/votre-utilisateur)
-
----
-N’hésitez pas à me contacter pour toute question ou suggestion concernant ce projet.
-
