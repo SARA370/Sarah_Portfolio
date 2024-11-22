@@ -1,10 +1,9 @@
-
 <template>
   <div>
     <!-- Header Section avec Logo, Date, Jour et Horloge -->
     <div :class="['header-content', { scrolled: hasScrolled }]">
       <div class="header-content-left">
-        <router-link to="./HomePage.vue">
+        <router-link to="/">
           <img src="../assets/Logo.png" alt="Logo" class="logo" />
         </router-link>
       </div>
@@ -12,11 +11,7 @@
       <div class="header-content-right">
         <button @click="toggleTheme">
           <img
-            :src="
-              isDarkMode
-                ? require('../assets/Imgs/Sun.webp')
-                : require('../assets/Imgs/Moon.webp')
-            "
+            :src="isDarkMode ? '../assets/Imgs/Sun.webp' : '../assets/Imgs/Moon.webp'"
             alt="Toggle Theme"
             class="icon"
           />
@@ -44,10 +39,10 @@
           <h1 class="info-box__title">Hello, I'm Sarah 👋</h1>
           <h2 class="info-box__subtitle">Junior Full-Stack Developer</h2>
           <p class="info-box__description">
-            Crafting <strong>pixel-perfect</strong>, <strong>engaging</strong>,
-            and <strong>accessible</strong> digital experiences that captivate
-            and inspire! <br /><br />From front-end to back-end, I handle it all
-            with precision and creativity.
+            Crafting <strong>pixel-perfect</strong>, <strong>engaging</strong>, and
+            <strong>accessible</strong> digital experiences that captivate and inspire!
+            <br /><br />
+            From front-end to back-end, I handle it all with precision and creativity.
           </p>
           <div class="info-box__buttons">
             <button class="info-box__button info-box__book-a-call">
@@ -66,6 +61,7 @@
               href="https://www.youtube.com/@LifeBits-h7m/shorts"
               class="social-icons__link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="social-icons__content">
                 <span>YouTube</span>
@@ -82,6 +78,7 @@
               href="https://github.com/SARA370"
               class="social-icons__link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="social-icons__content">
                 <span>GitHub</span>
@@ -98,6 +95,7 @@
               href="https://www.linkedin.com/in/sarah-al-rashid-92ab2a220/"
               class="social-icons__link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="social-icons__content">
                 <span>LinkedIn</span>
@@ -114,6 +112,7 @@
               href="https://www.behance.net/"
               class="social-icons__link"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="social-icons__content">
                 <span>Behance</span>
@@ -138,147 +137,32 @@
         </h2>
       </div>
       <div class="services-section__list">
-        <!-- Service 1: Full-Stack Development -->
-        <div class="services-section__item">
+        <!-- Service Cards -->
+        <div
+          class="services-section__item"
+          v-for="(service, index) in services"
+          :key="index"
+        >
           <div class="services-section__card">
             <div class="services-section__card-front">
-              <span class="services-section__number">1</span>
+              <span class="services-section__number">{{ index + 1 }}</span>
               <img
-                src="../assets/Imgs/coding.webp"
-                alt="Coding Icon"
+                :src="service.icon"
+                :alt="service.title"
                 class="services-section__icon"
               />
-              <h3>Développement Web Full-Stack</h3>
+              <h3>{{ service.title }}</h3>
               <p class="services-section__description">
-                Apportez vos références, objectifs, et idées, et je construirai
-                un site web performant et dynamique que vous et votre audience
-                allez adorer, que ce soit de zéro ou en utilisant un template
-                WordPress selon votre budget et la finalité du projet.
+                {{ service.description }}
               </p>
             </div>
             <div class="services-section__card-back">
-              <div class="tool-category">
-                <h4>Front-End</h4>
+              <div v-for="category in service.details" :key="category.title">
+                <h4>{{ category.title }}</h4>
                 <div class="tool-list">
-                  <span class="tool-item">HTML</span>
-                  <span class="tool-item">CSS</span>
-                  <span class="tool-item">JavaScript</span>
-                  <span class="tool-item">Vue</span>
-                  <span class="tool-item">React</span>
-                  <span class="tool-item">Angular</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Back-End</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Node.js</span>
-                  <span class="tool-item">Express</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Base de Données</h4>
-                <div class="tool-list">
-                  <span class="tool-item">MongoDB</span>
-                  <span class="tool-item">MySQL</span>
-                  <span class="tool-item">PostgreSQL</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Outils</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Git</span>
-                  <span class="tool-item">Docker</span>
-                  <span class="tool-item">VSCode</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Service 2: UX/UI Design & Graphic Design -->
-        <div class="services-section__item">
-          <div class="services-section__card">
-            <div class="services-section__card-front">
-              <span class="services-section__number">2</span>
-              <img
-                src="../assets/Imgs/Design.webp"
-                alt="Design Icon"
-                class="services-section__icon"
-              />
-              <h3>UX/UI Design + Graphisme</h3>
-              <p class="services-section__description">
-                Apportez votre vision, et je la traduirai en une interface
-                intuitive et un design graphique captivant, créant ainsi une
-                présence en ligne remarquable qui valorisera votre marque.
-              </p>
-            </div>
-            <div class="services-section__card-back">
-              <div class="tool-category">
-                <h4>Logiciels de Design</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Adobe XD</span>
-                  <span class="tool-item">Figma</span>
-                  <span class="tool-item">Sketch</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Création Graphique</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Adobe Photoshop</span>
-                  <span class="tool-item">Adobe Illustrator</span>
-                  <span class="tool-item">Canva</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Prototypage et Animation</h4>
-                <div class="tool-list">
-                  <span class="tool-item">InVision</span>
-                  <span class="tool-item">Principle</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Service 3: SEO -->
-        <div class="services-section__item">
-          <div class="services-section__card">
-            <div class="services-section__card-front">
-              <span class="services-section__number">3 </span>
-              <img
-                src="../assets/Imgs/SEO.webp"
-                alt="SEO Icon"
-                class="services-section__icon"
-              />
-              <h3>SEO</h3>
-              <p class="services-section__description">
-                Apportez vos ambitions de visibilité, et je ferai en sorte que
-                votre site atteigne un maximum de visiteurs grâce à un SEO qui
-                fait toute la différence pour capter et engager votre audience.
-              </p>
-            </div>
-            <div class="services-section__card-back">
-              <div class="tool-category">
-                <h4>Recherche de Mots-Clés</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Google Keyword Planner</span>
-                  <span class="tool-item">Ahrefs</span>
-                  <span class="tool-item">SEMrush</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Suivi des Performances</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Google Analytics</span>
-                  <span class="tool-item">Google Search Console</span>
-                  <span class="tool-item">Moz Pro</span>
-                </div>
-              </div>
-              <div class="tool-category">
-                <h4>Audit Technique</h4>
-                <div class="tool-list">
-                  <span class="tool-item">Screaming Frog</span>
-                  <span class="tool-item">GTmetrix</span>
+                  <span class="tool-item" v-for="tool in category.tools" :key="tool">
+                    {{ tool }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -290,7 +174,9 @@
     <!-- Portfolio Section -->
     <div class="portfolio" id="portfolio">
       <div class="portfolio__title">
-        <h2>Portfolio <span class="portfolio__bg-text">PORTFOLIO</span></h2>
+        <h2>
+          Portfolio <span class="portfolio__bg-text">PORTFOLIO</span>
+        </h2>
       </div>
       <div class="portfolio__buttons">
         <button
@@ -300,22 +186,12 @@
           All
         </button>
         <button
+          v-for="category in categories"
+          :key="category"
           class="portfolio__buttons__button"
-          @click="filterCategory('Code')"
+          @click="filterCategory(category)"
         >
-          Code
-        </button>
-        <button
-          class="portfolio__buttons__button"
-          @click="filterCategory('UI/UX')"
-        >
-          UI/UX
-        </button>
-        <button
-          class="portfolio__buttons__button"
-          @click="filterCategory('Graphisme')"
-        >
-          Graphisme
+          {{ category }}
         </button>
       </div>
       <div class="portfolio__images">
@@ -328,7 +204,6 @@
             <img :src="image.src" :alt="image.alt" class="portfolio__image" />
             <div class="portfolio__overlay">
               <h3 class="portfolio__project-name">{{ image.alt }}</h3>
-              <!-- Rendu dynamique des icônes spécifiques pour chaque projet -->
               <div class="portfolio__icons">
                 <img
                   v-for="icon in image.icons"
@@ -347,130 +222,102 @@
       </div>
     </div>
 
-
-
-
     <!-- Contact Section -->
-<section class="contact-section" id="contact">
-  <div class="contact-section__content">
-    <div class="contact-section__title">
-      <h2>
-        <span>Contact</span>
-        <span class="bg-text">CONTACT</span>
-      </h2>
-    </div>
-
-    <!-- Messages de succès et d'erreur -->
-    <div v-if="successMessage" class="success-message">
-      {{ successMessage }}
-    </div>
-    <div v-if="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-
-    <!-- Formulaire de Contact -->
-    <div class="contact-section__form">
-      <form class="form__container" @submit.prevent="submitForm">
-        <!-- Champ Nom -->
-        <div class="form__input-container">
-          <input
-            v-model="form.name"
-            type="text"
-            name="name"
-            class="form__input"
-            id="Name"
-            required
-            placeholder=" "
-            @focus="handleFocus"
-            @blur="handleBlur"
-          />
-          <span class="form__input-span"></span>
-          <label for="Name">Nom</label>
+    <section class="contact-section" id="contact">
+      <div class="contact-section__content">
+        <div class="contact-section__title">
+          <h2>
+            <span>Contact</span>
+            <span class="bg-text">CONTACT</span>
+          </h2>
         </div>
 
-        <!-- Champ Email -->
-        <div class="form__input-container">
-          <input
-            v-model="form.email"
-            type="email"
-            name="email"
-            class="form__input"
-            id="Email"
-            required
-            placeholder=" "
-            @focus="handleFocus"
-            @blur="handleBlur"
-          />
-          <span class="form__input-span"></span>
-          <label for="Email">Email</label>
+        <!-- Messages de succès et d'erreur -->
+        <div v-if="successMessage" class="success-message">
+          {{ successMessage }}
+        </div>
+        <div v-if="errorMessage" class="error-message">
+          {{ errorMessage }}
         </div>
 
-        <!-- Champ Sujet -->
-        <div class="form__input-container">
-          <input
-            v-model="form.subject"
-            type="text"
-            name="subject"
-            class="form__input"
-            id="Subject"
-            required
-            placeholder=" "
-            @focus="handleFocus"
-            @blur="handleBlur"
-          />
-          <span class="form__input-span"></span>
-          <label for="Subject">Sujet</label>
+        <!-- Formulaire de Contact -->
+        <div class="contact-section__form">
+          <form class="form__container" @submit.prevent="submitForm">
+            <!-- Champ Nom -->
+            <div class="form__input-container">
+              <input
+                v-model="form.name"
+                type="text"
+                name="name"
+                class="form__input"
+                id="Name"
+                required
+                placeholder=" "
+              />
+              <label for="Name">Nom</label>
+            </div>
+
+            <!-- Champ Email -->
+            <div class="form__input-container">
+              <input
+                v-model="form.email"
+                type="email"
+                name="email"
+                class="form__input"
+                id="Email"
+                required
+                placeholder=" "
+              />
+              <label for="Email">Email</label>
+            </div>
+
+            <!-- Champ Sujet -->
+            <div class="form__input-container">
+              <input
+                v-model="form.subject"
+                type="text"
+                name="subject"
+                class="form__input"
+                id="Subject"
+                required
+                placeholder=" "
+              />
+              <label for="Subject">Sujet</label>
+            </div>
+
+            <!-- Champ Téléphone -->
+            <div class="form__input-container">
+              <input
+                v-model="form.phone"
+                type="tel"
+                name="phone"
+                class="form__input"
+                id="Phone"
+                placeholder=" "
+              />
+              <label for="Phone">Téléphone</label>
+            </div>
+
+            <!-- Champ Message -->
+            <div class="form__input-container form__textarea-container">
+              <textarea
+                v-model="form.message"
+                id="Message"
+                class="form__input form__textarea"
+                required
+                placeholder=" "
+              ></textarea>
+              <label for="Message">Message</label>
+            </div>
+
+            <!-- Bouton Soumettre -->
+            <button type="submit" class="form__submit">Envoyer</button>
+          </form>
         </div>
-
-        <!-- Champ Téléphone -->
-        <div class="form__input-container">
-          <input
-            v-model="form.phone"
-            type="tel"
-            name="phone"
-            class="form__input"
-            id="Phone"
-            required
-            placeholder=" "
-            @focus="handleFocus"
-            @blur="handleBlur"
-          />
-          <span class="form__input-span"></span>
-          <label for="Phone">Téléphone</label>
-        </div>
-
-        <!-- Champ Message -->
-        <div class="form__input-container form__textarea-container">
-          <textarea
-            v-model="form.message"
-            id="Message"
-            class="form__input form__textarea"
-            required
-            placeholder=" "
-            @focus="handleFocus"
-            @blur="handleBlur"
-          ></textarea>
-          <span class="form__input-span"></span>
-          <label for="Message">Message</label>
-        </div>
-
-        <!-- Bouton Soumettre -->
-        <button type="submit" class="form__submit">Envoyer</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-    
+      </div>
+    </section>
   </div>
 </template>
-
 
 
 
